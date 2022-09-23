@@ -45,5 +45,14 @@ public class ParkingLot {
 
         return null;
     }
+    public boolean checkContainsCar(Car car) {
+        String carPlateNum = car.getPlateNum();
+        if (!StringUtils.hasText(carPlateNum)) {
+            return false;
+        }
+
+        return carPlateNums.contains(carPlateNum);
+    }
+
 
 }
