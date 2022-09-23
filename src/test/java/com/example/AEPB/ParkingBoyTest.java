@@ -42,6 +42,32 @@ class ParkingBoyTest {
     }
 
     @Test
+    void should_return_ticket_when_park_given_plotA_and_plotB_are_full_and_plotC_is_not_full_and_valid_car() {
+        int size = 1;
+        ParkingBoy boy = new ParkingBoy(new ParkingLot(size), new ParkingLot(size), new ParkingLot(size));
+        boy.park(new Car("ABCDEF"));
+        boy.park(new Car("CDEFGH"));
+        Ticket ticket = boy.park(new Car("AAAAAA"));
+
+        assertNotNull(ticket);
+    }
+
+    @Test
+    void should_park_in_plotC_given_plotA_and_plotB_are_full_and_plotC_is_not_full_and_valid_car() {
+        int size = 1;
+        ParkingLot parkingLotA = new ParkingLot(size);
+        ParkingLot parkingLotB = new ParkingLot(size);
+        ParkingLot parkingLotC = new ParkingLot(size);
+        ParkingBoy boy = new ParkingBoy(parkingLotA, parkingLotB, parkingLotC);
+        boy.park(new Car("ABCDEF"));
+        boy.park(new Car("CDEFGH"));
+        Ticket ticket = boy.park(new Car("AAAAAA"));
+        Car car = parkingLotC.pick(ticket);
+
+        assertNotNull(car);
+    }
+
+    @Test
     void should_return_null_when_park_given_duplicated_car() {
         int size = 10;
         ParkingBoy boy = new ParkingBoy(new ParkingLot(size), new ParkingLot(size), new ParkingLot(size));
