@@ -53,6 +53,19 @@ public class SmartParkingBoyTest {
         Car car = ParkingPlotA.pick(ticket);
 
         assertNotNull(car);
+
+    }
+
+    @Test
+    void should_return_car_when_pick_given_car_in_ParkingPlot_and_valid_ticket() {
+
+        int size = 10;
+        SmartParkingBoy boy = new SmartParkingBoy(new ParkingLot(size), new ParkingLot(size), new ParkingLot(size));
+
+        Ticket ticket = boy.park(new Car("AAAAAA"));
+        Car car = boy.pick(ticket);
+
+        assertNotNull(car);
     }
 
 
