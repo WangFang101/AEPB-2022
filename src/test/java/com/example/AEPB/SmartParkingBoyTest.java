@@ -4,6 +4,7 @@ package com.example.AEPB;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SmartParkingBoyTest {
 
@@ -68,6 +69,18 @@ public class SmartParkingBoyTest {
         assertNotNull(car);
     }
 
+    @Test
+    void should_not_return_car_when_pick_given_car_in_ParkingPlot_and_invalid_ticket() {
+
+        int size = 10;
+        SmartParkingBoy boy = new SmartParkingBoy(new ParkingLot(size), new ParkingLot(size), new ParkingLot(size));
+
+        boy.park(new Car("AAAAAA"));
+        Ticket ticket = new Ticket("BBBBBB");
+        Car car = boy.pick(ticket);
+
+        assertNull(car);
+    }
 
 
 
