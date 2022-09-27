@@ -1,17 +1,16 @@
 package com.example.AEPB;
 
-import java.util.*;
+import java.util.Comparator;
 
-public class SmartParkingBoy {
-
-    private List<ParkingLot> parkingLots = new ArrayList<>();
+public class SmartParkingBoy extends ParkingBoy{
 
     public SmartParkingBoy(ParkingLot... parkingLots) {
-        this.parkingLots.addAll(Arrays.asList(parkingLots));
+        super(parkingLots);
     }
 
+    @Override
     public Ticket park(Car car) {
-        ParkingLot parkingLot = parkingLots.stream().max(Comparator.comparingInt(ParkingLot::getPlotLeftCapacity)).orElse(new ParkingLot(0));
+        ParkingLot parkingLot = getParkingLots().stream().max(Comparator.comparingInt(ParkingLot::getPlotLeftCapacity)).orElse(new ParkingLot(0));
         if (0 == parkingLot.getPlotLeftCapacity()) {
             return null;
         }
@@ -19,12 +18,4 @@ public class SmartParkingBoy {
         return parkingLot.park(car);
     }
 
-    public Car pick(Ticket ticket) {
-        return parkingLots.stream().map(parkingLot -> parkingLot.pick(ticket))
-                .filter(Objects::nonNull).findFirst().orElse(null);
-    }
-
-
 }
-
-

@@ -10,6 +10,10 @@ public class ParkingBoy {
         this.parkingLots.addAll(Arrays.asList(parkingLots));
     }
 
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
     public Ticket park(Car car) {
         boolean isCarIn = parkingLots.stream()
                 .map(parkingLot -> parkingLot.checkContainsCar(car))
