@@ -56,10 +56,8 @@ public class ParkingLot {
     }
 
     public int getPlotLeftCapacity() {
-        int leftCapacity;
-        leftCapacity = size - carPlateNums.size();
 
-        return leftCapacity;
+        return  size - carPlateNums.size();
     }
 
 }
