@@ -10,7 +10,10 @@ public class SmartParkingBoy extends GraduateParkingBoy {
 
     @Override
     public Ticket park(Car car) {
-        ParkingLot parkingLot = getParkingLots().stream().max(Comparator.comparingInt(ParkingLot::getPlotLeftCapacity)).orElse(new ParkingLot(0));
+        ParkingLot parkingLot = getParkingLots()
+                .stream()
+                .max(Comparator.comparingInt(ParkingLot::getPlotLeftCapacity))
+                .orElse(new ParkingLot(0));
         if (0 == parkingLot.getPlotLeftCapacity()) {
             return null;
         }
