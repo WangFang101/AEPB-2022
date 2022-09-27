@@ -2,11 +2,11 @@ package com.example.AEPB;
 
 import java.util.*;
 
-public class ParkingBoy {
+public class GraduateParkingBoy {
 
     private List<ParkingLot> parkingLots = new ArrayList<>();
 
-    public ParkingBoy(ParkingLot... parkingLots) {
+    public GraduateParkingBoy(ParkingLot... parkingLots) {
         this.parkingLots.addAll(Arrays.asList(parkingLots));
     }
 
