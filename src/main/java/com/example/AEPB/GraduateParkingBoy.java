@@ -4,14 +4,10 @@ import java.util.*;
 
 public class GraduateParkingBoy {
 
-    private List<ParkingLot> parkingLots = new ArrayList<>();
+    protected List<ParkingLot> parkingLots = new ArrayList<>();
 
     public GraduateParkingBoy(ParkingLot... parkingLots) {
         this.parkingLots.addAll(Arrays.asList(parkingLots));
-    }
-
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
     }
 
     public Ticket park(Car car) {
