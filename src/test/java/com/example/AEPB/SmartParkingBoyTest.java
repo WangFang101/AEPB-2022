@@ -40,6 +40,22 @@ public class SmartParkingBoyTest {
         assertNotNull(car);
     }
 
+    @Test
+    void should_park_in_plotA_when_park_given_left_capacity_plotA_eq_plotB_eq_plotC() {
+
+        int size = 10;
+        ParkingLot ParkingPlotA = new ParkingLot(size);
+        ParkingLot ParkingPlotB = new ParkingLot(size);
+        ParkingLot ParkingPlotC = new ParkingLot(size);
+        SmartParkingBoy boy = new SmartParkingBoy(ParkingPlotA, ParkingPlotB, ParkingPlotC);
+
+        Ticket ticket = boy.park(new Car("AAAAAA"));
+        Car car = ParkingPlotA.pick(ticket);
+
+        assertNotNull(car);
+    }
+
+
 
 
 
