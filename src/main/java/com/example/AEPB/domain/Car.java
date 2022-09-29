@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.AEPB.domain;
 
 public class Car {
 
