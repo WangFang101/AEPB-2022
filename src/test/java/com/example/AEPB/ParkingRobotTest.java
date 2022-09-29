@@ -3,6 +3,7 @@ package com.example.AEPB;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ParkingRobotTest {
 
@@ -56,17 +57,17 @@ class ParkingRobotTest {
 
     @Test
     void should_park_A_when_park_given_A_B_C_vacancy_rate_eq_0() {
-        int size = 5;
+        int size = 1;
         ParkingLot parkingLotA = new ParkingLot(size);
         ParkingLot parkingLotB = new ParkingLot(size);
         ParkingLot parkingLotC = new ParkingLot(size);
         ParkingRobot parkingRobot = new ParkingRobot(parkingLotA, parkingLotB, parkingLotC);
+        parkingLotA.park(new Car("ABCDEF"));
+        parkingLotB.park(new Car("BCDEFG"));
+        parkingLotC.park(new Car("CDEFGH"));
 
-        Ticket ticket = parkingRobot.park(new Car("ABCDEF"));
-        Car car = parkingLotA.pick(ticket);
+        Ticket ticket = parkingRobot.park(new Car("DDDDDD"));
 
-        assertNotNull(car);
+        assertNull(ticket);
     }
-
-
 }
