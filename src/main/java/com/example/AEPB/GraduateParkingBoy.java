@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GraduateParkingBoy {
 
-    protected List<ParkingLot> parkingLots = new ArrayList<>();
+     List<ParkingLot> parkingLots = new ArrayList<>();
 
     public GraduateParkingBoy(ParkingLot... parkingLots) {
         this.parkingLots.addAll(Arrays.asList(parkingLots));
