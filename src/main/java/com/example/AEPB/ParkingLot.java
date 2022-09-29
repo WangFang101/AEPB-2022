@@ -2,6 +2,8 @@ package com.example.AEPB;
 
 import org.springframework.util.StringUtils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -58,6 +60,10 @@ public class ParkingLot {
     public int getPlotLeftCapacity() {
 
         return  size - carPlateNums.size();
+    }
+
+    public BigDecimal calVacancyRate() {
+        return new BigDecimal(getPlotLeftCapacity()).divide(new BigDecimal(size), RoundingMode.HALF_UP);
     }
 
 }
