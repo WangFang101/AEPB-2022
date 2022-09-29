@@ -70,4 +70,20 @@ class ParkingRobotTest {
 
         assertNull(ticket);
     }
+
+    @Test
+    void should_park_A_when_park_given_A_B_C_vacancy_rate_eq_and_duplicated_car() {
+        int size = 5;
+        ParkingLot parkingLotA = new ParkingLot(size);
+        ParkingLot parkingLotB = new ParkingLot(size);
+        ParkingLot parkingLotC = new ParkingLot(size);
+        ParkingRobot parkingRobot = new ParkingRobot(parkingLotA, parkingLotB, parkingLotC);
+
+        String plateNum = "ABCDEF";
+        parkingRobot.park(new Car(plateNum));
+        Ticket ticket = parkingRobot.park(new Car(plateNum));
+
+        assertNull(ticket);
+    }
+
 }
