@@ -86,4 +86,17 @@ class ParkingRobotTest {
         assertNull(ticket);
     }
 
+    @Test
+    void should_park_fail_when_park_given_invalid_car() {
+        int size = 5;
+        ParkingLot parkingLotA = new ParkingLot(size);
+        ParkingLot parkingLotB = new ParkingLot(size);
+        ParkingLot parkingLotC = new ParkingLot(size);
+        ParkingRobot parkingRobot = new ParkingRobot(parkingLotA, parkingLotB, parkingLotC);
+
+        Ticket ticket = parkingRobot.park(new Car(null));
+
+        assertNull(ticket);
+    }
+
 }
